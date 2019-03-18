@@ -1,4 +1,4 @@
-package com.xiaomi.mipushdemo;
+package com.seven.mitest;
 
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
@@ -27,13 +27,13 @@ import java.util.List;
 public class DemoApplication extends Application {
 
     // user your appid the key.
-    private static final String APP_ID = "1000270";
+    private static final String APP_ID = "2882303761517964683";
     // user your appid the key.
-    private static final String APP_KEY = "670100056270";
+    private static final String APP_KEY = "5101796443683";
 
     // 此TAG在adb logcat中检索自己所需要的信息， 只需在命令行终端输入 adb logcat | grep
     // com.xiaomi.mipushdemo
-    public static final String TAG = "com.xiaomi.mipushdemo";
+    public static final String TAG = "com.seven.mitest";
 
     private static DemoHandler sHandler = null;
     private static MainActivity sMainActivity = null;

@@ -1,4 +1,4 @@
-package com.xiaomi.mipushdemo;
+package com.seven.mitest;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.xiaomi.mipush.sdk.MiPushClient;
-import com.xiaomi.mipushdemo.TimeIntervalDialog.TimeIntervalInterface;
+import com.seven.mitest.TimeIntervalDialog.TimeIntervalInterface;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;

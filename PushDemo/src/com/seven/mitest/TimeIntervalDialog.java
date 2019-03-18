@@ -1,4 +1,4 @@
-package com.xiaomi.mipushdemo;
+package com.seven.mitest;
 
 import android.app.Dialog;
 import android.content.Context;

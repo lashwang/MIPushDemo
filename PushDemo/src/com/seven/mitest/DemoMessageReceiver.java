@@ -1,4 +1,4 @@
-package com.xiaomi.mipushdemo;
+package com.seven.mitest;
 
 import android.annotation.SuppressLint;
 import android.content.ComponentName;
