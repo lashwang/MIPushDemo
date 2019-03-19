@@ -99,7 +99,7 @@ public class DemoMessageReceiver extends PushMessageReceiver {
     @Override
     public void onNotificationMessageArrived(Context context, MiPushMessage message) {
         Log.v(DemoApplication.TAG,
-                "onNotificationMessageArrived is called. " + message.toString());
+                "onNotificationMessageArrived is called, description is: " + message.getDescription());
         String log = context.getString(R.string.arrive_notification_message, message.getContent());
         MainActivity.logList.add(0, getSimpleDate() + " " + log);
 
