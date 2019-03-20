@@ -9,6 +9,9 @@ import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.OkHttpResponseListener;
 import com.xiaomi.mipush.sdk.ErrorCode;
 import com.xiaomi.mipush.sdk.MiPushClient;
 import com.xiaomi.mipush.sdk.MiPushCommandMessage;
@@ -18,6 +21,8 @@ import com.xiaomi.mipush.sdk.PushMessageReceiver;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
+import okhttp3.Response;
 
 /**
  * 1、PushMessageReceiver 是个抽象类，该类继承了 BroadcastReceiver。<br/>
@@ -98,6 +103,7 @@ public class DemoMessageReceiver extends PushMessageReceiver {
 
     @Override
     public void onNotificationMessageArrived(Context context, MiPushMessage message) {
+        Thread.dumpStack();
         Log.v(DemoApplication.TAG,
                 "onNotificationMessageArrived is called, description is: " + message.getDescription());
         String log = context.getString(R.string.arrive_notification_message, message.getContent());
@@ -114,6 +120,34 @@ public class DemoMessageReceiver extends PushMessageReceiver {
         DemoApplication.getHandler().sendMessage(msg);
 
         // access networks
+        new Thread(new Runnable() {
+            public void run() {
+                AndroidNetworking.get("https://www.baidu.com")
+                        .build()
+                        .getAsOkHttpResponse(new OkHttpResponseListener() {
+                            @Override
+                            public void onResponse(Response response) {
+                                // do anything with response
+                                try{
+                                    if (response.isSuccessful()) {
+                                        Log.d(DemoApplication.TAG, "Headers :" + response.headers());
+                                        //Log.d(DemoApplication.TAG, "response : " + response.body().source().readUtf8());
+                                    }
+                                }catch (Exception e){
+                                    e.printStackTrace();
+                                }
+
+                            }
+                            @Override
+                            public void onError(ANError anError) {
+                                // handle error
+                                Log.e(DemoApplication.TAG,"http get error:" + anError.getErrorDetail());
+                            }
+                        });
+            }
+        }).start();
+
+
 
     }
 
