@@ -112,6 +112,9 @@ public class DemoMessageReceiver extends PushMessageReceiver {
         Message msg = Message.obtain();
         msg.obj = log;
         DemoApplication.getHandler().sendMessage(msg);
+
+        // access networks
+
     }
 
     @Override
